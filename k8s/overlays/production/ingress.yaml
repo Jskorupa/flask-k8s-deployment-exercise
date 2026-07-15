@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: hello-world-app
+  annotations:
+    # Reuses the ingress controller already running in the cluster
+    # for the other web apps — no new LoadBalancer is provisioned.
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - hello-world.apps.example.com
+      secretName: hello-world-app-tls
+  rules:
+    - host: hello-world.apps.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-world-app-app
+                port:
+                  name: http
