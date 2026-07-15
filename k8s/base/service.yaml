@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+  labels:
+    app.kubernetes.io/name: app
+    app.kubernetes.io/component: web
+spec:
+  # ClusterIP, not LoadBalancer/NodePort: a shared ingress controller
+  # in the cluster fronts every app. This is the key cost lever when
+  # onboarding many similar apps — you provision cloud LoadBalancers
+  # (and their per-hour + per-GB charges) once for the ingress
+  # controller, not once per application.
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: app
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
