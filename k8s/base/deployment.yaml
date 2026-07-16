@@ -65,7 +65,7 @@ spec:
         - name: app
           # Pin to an immutable tag (or better, a digest) per deploy for
           # reproducibility — never ":latest" in a shared production cluster.
-          image: registry.example.com/apps/hello-world-app:1.0.0
+          image: registry.example.com/apps/hello-world-app:1.0.1
           imagePullPolicy: IfNotPresent
 
           ports:

@@ -23,7 +23,7 @@ resources:
 
 images:
   - name: registry.example.com/apps/hello-world-app
-    newTag: "1.0.0"
+    newTag: "1.0.1"
 
 replicas:
   - name: app

@@ -38,8 +38,8 @@ k8s/
 
 Build/run locally:
 ```bash
-docker build -t hello-world-app:1.0.0 .
-docker run --rm -p 8080:8080 hello-world-app:1.0.0
+docker build -t hello-world-app:1.0.1 .
+docker run --rm -p 8080:8080 hello-world-app:1.0.1
 ```
 
 ## Part 2 - Kubernetes manifests
